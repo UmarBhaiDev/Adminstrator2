@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search and Download Exposes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+      background-color: #ffffff; /* Green background */
+      color: #33DB4A; /* White text */
+    }
+
+    .search-download-container {
+      width: 90%;
+      margin:  auto;
+      color: #444;
+      background-color: #33DB4A; /* Dark background */
+      border-radius: 8px;
+      padding: 20px;
+
+    }
+
+    .expose-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #ffffff; /* Darker background for list items */
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    .expose-item span {
+    
+      word-break: break-word;
+    }
+    
+  .btn-green {
+    background-color: #33DB4A; /* Green background */
+    color: #fff; /* White text */
+    border: none; /* Remove border */
+  }
+  .btn-green:hover {
+    background-color: #28b840; /* Darker green on hover */
+  }
+  .sidebar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60px;
+      height: 657px;
+      background: #33DB4A;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 10px;
+      z-index: 1000;
+    }
+
+    .sidebar img {
+      width: 50px;
+      height: 30px;
+      margin-bottom: 20px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+
+    .sidebar li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 60px;
+      cursor: pointer;
+    }
+
+    .sidebar i {
+      color: #fff;
+      font-size: 20px;
+      transition: color 0.3s ease;
+    }
+
+    .sidebar i:hover {
+      color: #f0d124;
+    }
+
+    .sidebar .separator {
+      width: 80%;
+      height: 1px;
+      background: #555;
+      margin: 20px 0;
+    }
+
+    .sidebar .logout {
+      margin-top: auto;
+      margin-bottom: 20px;
+    }
+
+</style>
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <a href="/pages/Adminstartor/index.html"><img src="../../assests/img/logo-removebg-preview.png" alt="Logo"></a>
+    <ul>
+      <li title="Profile"><a href="profileooo.html"><i class="fa-solid fa-circle-user"></i></a></li>
+      <li title="Search"><a href="index.html"><i class="fas fa-search" title="Search"></i></a></li>
+      <li title="listing"><a href="listinggggg.html"><i class="fa-solid fa-list"></i> </a></li>
+      <li title="Exposes"><a href="agentpage1.html"><i class="fa-solid fa-file-shield"></i></a></li>
+      <li title="Construction"><a href="construction.html"><i class="fa-regular fa-building"></i></a></li>
+      <li title="Marks"><a href="marks.html"><i class="fa-solid fa-bookmark"></i></a></li>
+      <li title="Team"><a href="users.html"><i class="fa-solid fa-house-laptop"></i></a></li>
+      <li title="History"><a href="history.html"><i class="fas fa-history"></i></a></li>
+    </ul>
+    <div class="separator"></div>
+    <li><a href="../signin.html"><i class="fa-solid fa-right-from-bracket" title="Log out"></i></a></li>
+  </div>
+  <div class="search-download-container">
+    <h3 class="text-center mb-4">Search and Download Exposes</h3>
+    <form id="searchForm">
+      <div class="mb-3">
+        <label for="searchQuery" class="form-label">Search Expose</label>
+        <input type="text" id="searchQuery" class="form-control" placeholder="Enter expose name or keyword" required>
+      </div>
+      <button type="submit" class="btn btn-success w-100">Search</button>
+    </form>
+
+    <h4 class="mt-4">Search Results</h4>
+    <div id="searchResults" class="mt-3">
+      <!-- Dynamic results will be displayed here -->
+    </div>
+  </div>
+
+  <script>
+    const searchForm = document.getElementById('searchForm');
+    const searchResults = document.getElementById('searchResults');
+
+    // Handle search form submission
+    searchForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const query = document.getElementById('searchQuery').value;
+
+      // Example results (simulate search functionality)
+      const results = [
+        { name: 'Expose 1', link: '#', id: 1 },
+        { name: 'Expose 2', link: '#', id: 2 },
+        { name: 'Expose 3', link: '#', id: 3 },
+        { name: 'Expose 4', link: '#', id: 3 }
+      ];
+
+      // Clear previous results
+      searchResults.innerHTML = '';
+
+      // Display new results
+      results.forEach((result) => {
+        const exposeItem = document.createElement('div');
+        exposeItem.className = 'expose-item';
+        exposeItem.innerHTML = `
+          <span>${result.name}</span>
+          
+ <a href="${result.link}" class="btn btn-green btn-sm" download>Download</a>        `;
+        searchResults.appendChild(exposeItem);
+      });
+
+      // Clear search input
+      searchForm.reset();
+    });
+  </script>
+</body>
+</html>

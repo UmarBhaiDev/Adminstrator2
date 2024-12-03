@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Property Ratings</title>
+    <!-- Bootstrap CSS (CDN) -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #33DB4A;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .property-highlight {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 20px;
+            margin: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .property-highlight img {
+            max-width: 150px;
+            border-radius: 8px;
+        }
+        .property-details {
+            margin-left: 20px;
+        }
+        .rating {
+            margin-top: 10px;
+            font-size: 1.2em;
+            color: #fca311;
+        }
+        .rating-categories {
+            margin: 20px;
+        }
+        .rating-category {
+            background: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .progress-bar {
+            width: 60%;
+            background: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+            height: 10px;
+        }
+        .progress-bar span {
+            display: block;
+            height: 10px;
+            background: #33DB4A;
+        }
+        .add-rating {
+            text-align: center;
+            margin: 20px;
+        }
+        .add-rating input, .add-rating button {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .add-rating button {
+            background-color: #33DB4A;
+            color: white;
+            cursor: pointer;
+        }
+        .add-rating button:hover {
+            background-color: #07b31e;
+        }
+        .modal-content {
+            padding: 20px;
+        }
+        .modal-header {
+            background-color: #33DB4A;
+            color: white;
+        }
+        .modal-footer {
+            text-align: center;
+        }
+        .sidebar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60px;
+      height: 657px;
+      background: #33DB4A;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 10px;
+      z-index: 1000;
+    }
+
+    .sidebar img {
+      width: 50px;
+      height: 30px;
+      margin-bottom: 20px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+
+    .sidebar li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 60px;
+      cursor: pointer;
+    }
+
+    .sidebar i {
+      color: #fff;
+      font-size: 20px;
+      transition: color 0.3s ease;
+    }
+
+    .sidebar i:hover {
+      color: #f0d124;
+    }
+
+    .sidebar .separator {
+      width: 80%;
+      height: 1px;
+      background: #555;
+      margin: 20px 0;
+    }
+
+    .sidebar .logout {
+      margin-top: auto;
+      margin-bottom: 20px;
+    }
+
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <a href="/pages/Adminstartor/index.html"><img src="../../assests/img/logo-removebg-preview.png" alt="Logo"></a>
+        <ul>
+          <li title="Profile"><a href="profileooo.html"><i class="fa-solid fa-circle-user"></i></a></li>
+          <li title="Search"><a href="index.html"><i class="fas fa-search" title="Search"></i></a></li>
+          <li title="listing"><a href="listinggggg.html"><i class="fa-solid fa-list"></i> </a></li>
+          <li title="Exposes"><a href="agentpage1.html"><i class="fa-solid fa-file-shield"></i></a></li>
+          <li title="Construction"><a href="construction.html"><i class="fa-regular fa-building"></i></a></li>
+          <li title="Marks"><a href="marks.html"><i class="fa-solid fa-bookmark"></i></a></li>
+          <li title="Team"><a href="users.html"><i class="fa-solid fa-house-laptop"></i></a></li>
+          <li title="History"><a href="history.html"><i class="fas fa-history"></i></a></li>
+        </ul>
+        <div class="separator"></div>
+        <li><a href="../signin.html"><i class="fa-solid fa-right-from-bracket" title="Log out"></i></a></li>
+      </div>
+<header>
+    <h1>Property Ratings & Reviews</h1>
+</header>
+
+<!-- Property Listing Section -->
+<div class="container">
+    <div class="property-highlight">
+        <img src="/assests/img/images.jpg" alt="Property Image">
+        <div class="property-details">
+            <h2>Luxury Apartments</h2>
+            <p>Location: Downtown City Center</p>
+            <p class="rating">Overall Rating: ⭐⭐⭐⭐☆ (4.5/5)</p>
+            <p id="listing-price">Price: $1,200</p>
+            <p id="listing-category">Category: Premium</p>
+        </div>
+    </div>
+
+    <!-- Rating Categories -->
+    <div class="rating-categories" id="rating-categories">
+        <div class="rating-category">
+            <span>Location</span>
+            <div class="progress-bar">
+                <span style="width: 90%;"></span>
+            </div>
+        </div>
+        <div class="rating-category">
+            <span>Amenities</span>
+            <div class="progress-bar">
+                <span style="width: 80%;"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add New Rating Section -->
+    <div class="add-rating">
+        <h3>Add New Rating</h3>
+        <input type="text" id="aspect-name" class="form-control" placeholder="Aspect Name (e.g., Design)">
+        <input type="number" id="aspect-score" class="form-control" placeholder="Score (0-100)" min="0" max="100">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#editModal">Add Listing</button>
+    </div>
+</div>
+
+<!-- Modal for Editing Listing -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Edit Listing</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editForm">
+                    <div class="form-group">
+                        <label for="listing-img">Image URL</label>
+                        <input type="text" class="form-control" id="listing-img" placeholder="Enter image URL">
+                    </div>
+                    <div class="form-group">
+                        <label for="listing-category">Category</label>
+                        <input type="text" class="form-control" id="listing-category-input" placeholder="Enter category">
+                    </div>
+                    <div class="form-group">
+                        <label for="listing-title">Title</label>
+                        <input type="text" class="form-control" id="listing-title" placeholder="Enter title">
+                    </div>
+                    <div class="form-group">
+                        <label for="listing-price">Price</label>
+                        <input type="text" class="form-control" id="listing-price-input" placeholder="Enter price">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" id="saveChanges">Save Changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and jQuery (CDN) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    // JavaScript to handle dynamic content update
+    document.getElementById('saveChanges').addEventListener('click', function() {
+        // Get input values from the modal
+        const imgSrc = document.getElementById('listing-img').value;
+        const category = document.getElementById('listing-category-input').value;
+        const title = document.getElementById('listing-title').value;
+        const price = document.getElementById('listing-price-input').value;
+
+        // Update the content of the listing
+        document.querySelector('.property-highlight img').src = imgSrc;
+        document.querySelector('.property-details h2').textContent = title;
+        document.getElementById('listing-price').textContent = `Price: $${price}`;
+        document.getElementById('listing-category').textContent = `Category: ${category}`;
+
+        // Close the modal
+        $('#editModal').modal('hide');
+    });
+
+    // Add Rating functionality
+    function addRating() {
+        const nameInput = document.getElementById('aspect-name');
+        const scoreInput = document.getElementById('aspect-score');
+        const ratingCategories = document.getElementById('rating-categories');
+
+        // Validate inputs
+        const name = nameInput.value.trim();
+        const score = parseInt(scoreInput.value);
+
+        if (!name) {
+            alert("Please enter a valid aspect name.");
+            return;
+        }
+
+        if (isNaN(score) || score < 0 || score > 100) {
+            alert("Please enter a valid score between 0 and 100.");
+            return;
+        }
+
+        // Create new rating category
+        const newCategory = document.createElement('div');
+        newCategory.className = 'rating-category';
+        newCategory.innerHTML = `
+            <span>${name}</span>
+            <div class="progress-bar">
+                <span style="width: ${score}%;"></span>
+            </div>
+        `;
+
+        // Add the new category to the list
+        ratingCategories.appendChild(newCategory);
+
+        // Clear inputs
+        nameInput.value = '';
+        scoreInput.value = '';
+    }
+</script>
+
+</body>
+</html>

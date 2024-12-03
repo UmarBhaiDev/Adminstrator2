@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage and Authorize Agents</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    body {
+      background-color: #fff;
+      color: #fff;
+    }
+
+    .agent-management-page {
+      width: 90%;
+      margin: auto;
+      background-color: #33DB4A;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    .form-section {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+      color: #333;
+    }
+
+    .btn-authorize {
+      background-color: #33DB4A;
+      color: #fff;
+    }
+    .btn-authorize:hover{
+      background-color: #28a745;
+      color: white;
+    }
+    .btn-send-notification {
+      background-color: #33DB4A;
+      color: #fff;
+    }
+    .btn-send-notification:hover{
+      background-color: #28a745;
+      color: white;
+    }
+
+    .btn-request-marking {
+      background-color: #33DB4A;
+      color: #fff;
+    }
+  .btn-request-marking:hover{
+    background-color: #28a745;
+    color: white;
+  }
+  .btn-buyer{
+    background-color: #33DB4A;
+    color: white;
+  }
+.btn-buyer:hover{
+  background-color: #28a745;
+  color: white;
+}
+    .sidebar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60px;
+      height: 210vh;
+      background: #33DB4A;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 10px;
+      z-index: 1000;
+    }
+
+    .sidebar img {
+      width: 50px;
+      height: 30px;
+      margin-bottom: 20px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+
+    .sidebar li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 60px;
+      cursor: pointer;
+    }
+
+    .sidebar i {
+      color: #fff;
+      font-size: 20px;
+      transition: color 0.3s ease;
+    }
+
+    .sidebar i:hover {
+      color: #f0d124;
+    }
+
+    .sidebar .separator {
+      width: 80%;
+      height: 1px;
+      background: #555;
+      margin: 20px 0;
+    }
+
+    .sidebar .logout {
+      margin-top: auto;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="sidebar">
+    <a href="/pages/Adminstartor/index.html"><img src="../../assests/img/logo-removebg-preview.png" alt="Logo"></a>
+    <ul>
+      <li title="Profile"><a href="profileooo.html"><i class="fa-solid fa-circle-user"></i></a></li>
+      <li title="Search"><a href="index.html"><i class="fas fa-search" title="Search"></i></a></li>
+      <li title="listing"><a href="listinggggg.html"><i class="fa-solid fa-list"></i> </a></li>
+      <li title="Exposes"><a href="agentpage1.html"><i class="fa-solid fa-file-shield"></i></a></li>
+      <li title="Construction"><a href="construction.html"><i class="fa-regular fa-building"></i></a></li>
+      <li title="Marks"><a href="marks.html"><i class="fa-solid fa-bookmark"></i></a></li>
+      <li title="Team"><a href="users.html"><i class="fa-solid fa-house-laptop"></i></a></li>
+      <li title="History"><a href="history.html"><i class="fas fa-history"></i></a></li>
+    </ul>
+    <div class="separator"></div>
+    <li><a href="../signin.html"><i class="fa-solid fa-right-from-bracket" title="Log out"></i></a></li>
+  </div>
+  <div class="agent-management-page">
+    <h3 class="text-center mb-4">Manage and Authorize Agents</h3>
+
+    <!-- Agent Authorization Section -->
+    <section class="form-section">
+      <h4 class="section-title">Authorize Agents</h4>
+      <form id="authorizeAgentForm">
+        <div class="mb-3">
+          <label for="agentName" class="form-label">Agent Name</label>
+          <input type="text" class="form-control" id="agentName" placeholder="Enter agent name" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Authorization</label>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="createBuyerProfile" value="Create Buyer Profile">
+            <label class="form-check-label" for="createBuyerProfile">Create Buyer Profiles</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="sendNotifications" value="Send Notifications">
+            <label class="form-check-label" for="sendNotifications">Send Notifications</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="requestPropertyMarking"
+              value="Request Property Marking">
+            <label class="form-check-label" for="requestPropertyMarking">Request Property Marking</label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-authorize w-100">Authorize Agent</button>
+      </form>
+    </section>
+
+    <!-- Buyer Profile Creation Section -->
+    <section class="form-section">
+      <h4 class="section-title">Create Buyer Profile</h4>
+      <form id="buyerProfileForm">
+        <div class="mb-3">
+          <label for="buyerName" class="form-label">Buyer Name</label>
+          <input type="text" class="form-control" id="buyerName" placeholder="Enter buyer name" required>
+        </div>
+        <div class="mb-3">
+          <label for="buyerEmail" class="form-label">Buyer Email</label>
+          <input type="email" class="form-control" id="buyerEmail" placeholder="Enter buyer email" required>
+        </div>
+        <button type="submit" class="btn btn-buyer w-100">Create Buyer Profile</button>
+      </form>
+    </section>
+
+    <!-- Send Notification Section -->
+    <section class="form-section">
+      <h4 class="section-title">Send Notification to Agent</h4>
+      <form id="sendNotificationForm">
+        <div class="mb-3">
+          <label for="notificationText" class="form-label">Notification Message</label>
+          <textarea class="form-control" id="notificationText" rows="3" placeholder="Enter notification message"
+            required></textarea>
+        </div>
+        <button type="submit" class="btn btn-send-notification w-100">Send Notification</button>
+      </form>
+    </section>
+
+    <!-- Request Property Marking Section -->
+    <section class="form-section">
+      <h4 class="section-title">Request Property Marking</h4>
+      <form id="requestMarkingForm">
+        <div class="mb-3">
+          <label for="propertyId" class="form-label">Property ID</label>
+          <input type="text" class="form-control" id="propertyId" placeholder="Enter property ID" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Marking Type</label>
+          <select class="form-control" id="markingType">
+            <option value="ownership">Ownership</option>
+            <option value="interest">Interest</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-request-marking w-100">Request Property Marking</button>
+      </form>
+    </section>
+
+  </div>
+
+  <script>
+    // Handle agent authorization
+    document.getElementById('authorizeAgentForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const agentName = document.getElementById('agentName').value;
+      const authorizedActions = [];
+      if (document.getElementById('createBuyerProfile').checked) authorizedActions.push('Create Buyer Profiles');
+      if (document.getElementById('sendNotifications').checked) authorizedActions.push('Send Notifications');
+      if (document.getElementById('requestPropertyMarking').checked) authorizedActions.push('Request Property Marking');
+
+      if (authorizedActions.length > 0) {
+        alert(`Agent "${agentName}" has been authorized for: ${authorizedActions.join(', ')}`);
+      } else {
+        alert('Please select at least one authorization action.');
+      }
+    });
+
+    // Handle buyer profile creation
+    document.getElementById('buyerProfileForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const buyerName = document.getElementById('buyerName').value;
+      const buyerEmail = document.getElementById('buyerEmail').value;
+      alert(`Buyer profile created for ${buyerName} with email: ${buyerEmail}`);
+    });
+
+    // Handle sending notification
+    document.getElementById('sendNotificationForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const notificationText = document.getElementById('notificationText').value;
+      alert(`Notification sent: ${notificationText}`);
+    });
+
+    // Handle requesting property marking
+    document.getElementById('requestMarkingForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const propertyId = document.getElementById('propertyId').value;
+      const markingType = document.getElementById('markingType').value;
+      alert(`Property ID ${propertyId} has been marked for ${markingType}`);
+    });
+  </script>
+
+</body>
+
+</html>

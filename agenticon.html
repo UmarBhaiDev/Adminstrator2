@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Management</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    body {
+      background-color: #fff; /* White background */
+      color: #fff; /* White text */
+    }
+
+    .agent-management {
+      
+      width: 90%;
+      height: 100vh;
+      margin:  auto;
+      background-color: #33DB4A; /* Green background */
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    .agent-list {
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .agent-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #444; /* Dark background for agent items */
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    .agent-item span {
+      word-break: break-word;
+    }
+
+    .btn {
+      color: #fff; /* White text color for buttons */
+    }
+
+    .btn-success {
+      background-color: #0069d9; /* Blue background for success button */
+      color: #fff;
+    }
+
+    .btn-danger {
+      background-color: #dc3545; /* Red background for danger button */
+      color: #fff;
+    }
+
+    .btn-sm {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.875rem;
+      line-height: 1.25;
+      border-radius: 0.2rem;
+    }    .sidebar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60px;
+      height: 100%;
+      background: #33DB4A;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 10px;
+      z-index: 1000;
+    }
+
+    .sidebar img {
+      width: 50px;
+      height: 30px;
+      margin-bottom: 20px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+
+    .sidebar li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 60px;
+      cursor: pointer;
+    }
+
+    .sidebar i {
+      color: #fff;
+      font-size: 20px;
+      transition: color 0.3s ease;
+    }
+
+    .sidebar i:hover {
+      color: #f0d124;
+    }
+
+    .sidebar .separator {
+      width: 80%;
+      height: 1px;
+      background: #555;
+      margin: 20px 0;
+    }
+
+    .sidebar .logout {
+      margin-top: auto;
+      margin-bottom: 20px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <a href="/pages/Adminstartor/index.html"><img src="../../assests/img/logo-removebg-preview.png" alt="Logo"></a>
+    <ul>
+      <li title="Profile"><a href="profileooo.html"><i class="fa-solid fa-circle-user"></i></a></li>
+      <li title="Search"><a href="index.html"><i class="fas fa-search" title="Search"></i></a></li>
+      <li title="listing"><a href="listinggggg.html"><i class="fa-solid fa-list"></i> </a></li>
+      <li title="Exposes"><a href="agentpage1.html"><i class="fa-solid fa-file-shield"></i></a></li>
+      <li title="Construction"><a href="construction.html"><i class="fa-regular fa-building"></i></a></li>
+      <li title="Marks"><a href="marks.html"><i class="fa-solid fa-bookmark"></i></a></li>
+      <li title="Team"><a href="users.html"><i class="fa-solid fa-house-laptop"></i></a></li>
+      <li title="History"><a href="history.html"><i class="fas fa-history"></i></a></li>
+    </ul>
+    <div class="separator"></div>
+    <li><a href="../signin.html"><i class="fa-solid fa-right-from-bracket" title="Log out"></i></a></li>
+  </div>
+<div class="agent-management">
+  <h3 class="text-center mb-4">Agent Management</h3>
+  <form id="agentForm">
+    <div class="mb-3">
+      <label for="agentEmail" class="form-label">Agent Email</label>
+      <input type="email" id="agentEmail" class="form-control" placeholder="Enter agent email" required>
+    </div>
+    <div class="mb-3">
+      <label for="agentPassword" class="form-label">Password</label>
+      <input type="password" id="agentPassword" class="form-control" placeholder="Enter password" required>
+    </div>
+    <div class="mb-3">
+      <label for="confirmPassword" class="form-label">Confirm Password</label>
+      <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm password" required>
+    </div>
+    <button type="submit" class="btn btn-success w-100">Add Agent</button>
+  </form>
+
+  <h4 class="mt-4">Agent List</h4>
+  <div class="agent-list" id="agentList"></div>
+</div>
+
+<script>
+  const agentForm = document.getElementById('agentForm');
+  const agentList = document.getElementById('agentList');
+
+  // Add agent to the list
+  agentForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById('agentEmail').value;
+    const password = document.getElementById('agentPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+
+    if (password !== confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
+
+    // Create agent item
+    const agentItem = document.createElement('div');
+    agentItem.className = 'agent-item';
+    agentItem.innerHTML = `
+      <span>${email}</span>
+      <button class="btn btn-danger btn-sm remove-agent">Remove</button>
+    `;
+
+    // Add remove functionality
+    agentItem.querySelector('.remove-agent').addEventListener('click', () => {
+      agentItem.remove();
+    });
+
+    // Append agent to the list
+    agentList.appendChild(agentItem);
+
+    // Reset form
+    agentForm.reset();
+  });
+</script>
+</body>
+</html>

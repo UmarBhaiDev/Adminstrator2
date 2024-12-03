@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Profile Management</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color:  #33DB4A;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-custom {
+            border: none;
+            border-radius: 12px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-control:focus {
+            border-color:  #33DB4A;
+            box-shadow: 0px 0px 5px  #33DB4A;
+        }
+
+        .btn-primary {
+            background-color:  #16af2a;
+            border: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            background-color:  #33DB4A;
+        }
+
+        .custom-label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .access-box {
+            background: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 10px;
+        }
+        .sidebar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60px;
+      height: 120vh;
+      background: #33DB4A;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 10px;
+      z-index: 1000;
+    }
+
+    .sidebar img {
+      width: 50px;
+      height: 30px;
+      margin-bottom: 20px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+
+    .sidebar li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 60px;
+      cursor: pointer;
+    }
+
+    .sidebar i {
+      color: #fff;
+      font-size: 20px;
+      transition: color 0.3s ease;
+    }
+
+    .sidebar i:hover {
+      color: #f0d124;
+    }
+
+    .sidebar .separator {
+      width: 80%;
+      height: 1px;
+      background: #555;
+      margin: 20px 0;
+    }
+
+    .sidebar .logout {
+      margin-top: auto;
+      margin-bottom: 20px;
+    }
+
+
+       
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Agent Profile Management</h1>
+</header>
+<div class="sidebar">
+    <a href="/pages/Adminstartor/index.html"><img src="../../assests/img/logo-removebg-preview.png" alt="Logo"></a>
+    <ul>
+      <li title="Profile"><a href="profileooo.html"><i class="fa-solid fa-circle-user"></i></a></li>
+      <li title="Search"><a href="index.html"><i class="fas fa-search" title="Search"></i></a></li>
+      <li title="listing"><a href="listinggggg.html"><i class="fa-solid fa-list"></i> </a></li>
+      <li title="Exposes"><a href="agentpage1.html"><i class="fa-solid fa-file-shield"></i></a></li>
+      <li title="Construction"><a href="construction.html"><i class="fa-regular fa-building"></i></a></li>
+      <li title="Marks"><a href="marks.html"><i class="fa-solid fa-bookmark"></i></a></li>
+      <li title="Team"><a href="users.html"><i class="fa-solid fa-house-laptop"></i></a></li>
+      <li title="History"><a href="history.html"><i class="fas fa-history"></i></a></li>
+    </ul>
+    <div class="separator"></div>
+    <li><a href="../signin.html"><i class="fa-solid fa-right-from-bracket" title="Log out"></i></a></li>
+  </div>
+
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card card-custom p-4">
+                <h4 class="text-center mb-4">Create Agent Profile</h4>
+                <form>
+                    <!-- Agent Name -->
+                    <div class="form-group">
+                        <label for="agentName" class="custom-label">Agent Name</label>
+                        <input type="text" id="agentName" class="form-control" placeholder="Enter agent's full name">
+                    </div>
+                    
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="agentEmail" class="custom-label">Email Address</label>
+                        <input type="email" id="agentEmail" class="form-control" placeholder="Enter agent's email">
+                    </div>
+
+                    <!-- Role Selection -->
+                    <div class="form-group">
+                        <label for="agentRole" class="custom-label">Role</label>
+                        <select id="agentRole" class="form-control">
+                            <option value="" disabled selected>Select a role</option>
+                            <option value="admin">Admin</option>
+                            <option value="manager">Manager</option>
+                            <option value="agent">Agent</option>
+                        </select>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="form-group">
+                        <label for="agentPassword" class="custom-label">Password</label>
+                        <input type="password" id="agentPassword" class="form-control" placeholder="Create a password">
+                    </div>
+
+                    <!-- Access Controls -->
+                    <label class="custom-label">Access Levels</label>
+                    <div class="access-box">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="dashboardAccess">
+                            <label class="form-check-label" for="dashboardAccess">Dashboard Access</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="reportsAccess">
+                            <label class="form-check-label" for="reportsAccess">Reports Access</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="settingsAccess">
+                            <label class="form-check-label" for="settingsAccess">Settings Access</label>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-primary btn-block">Create Profile</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

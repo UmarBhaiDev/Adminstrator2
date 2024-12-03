@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Archive - Our Curated Listings</title>
+
+  <!-- Bootstrap CSS (CDN) -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffffff; /* White background */
+      color: black;
+    }
+
+    .header-title {
+      font-size: 32px;
+      margin-bottom: 30px;
+      text-align: center;
+      color: #333;
+    }
+
+    .listing-card {
+      background: #47e617; /* Green background */
+      /* border-radius: 12px; */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .listing-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-category {
+      font-size: 14px;
+      font-weight: bold;
+      color: #ffcc00; /* Yellow for category */
+    }
+
+    .card-title {
+      font-size: 22px;
+      margin: 10px 0;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .card-price {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 15px;
+      color: white;
+    }
+
+    .card-description {
+      font-size: 15px;
+      color: #f8f8f8;
+      margin: 10px 0;
+      line-height: 1.6;
+    }
+
+    /* Button Styling */
+    .add-listing-btn-header {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 12px 20px;
+      background-color: #7cfc00; /* Light Green */
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .add-listing-btn-header:hover {
+      background-color: #66cc00;
+    }
+    .sidebar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60px;
+      height: 657px;
+      background: #33DB4A;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 10px;
+      z-index: 1000;
+    }
+
+    .sidebar img {
+      width: 50px;
+      height: 30px;
+      margin-bottom: 20px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+
+    .sidebar li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 60px;
+      cursor: pointer;
+    }
+
+    .sidebar i {
+      color: #fff;
+      font-size: 20px;
+      transition: color 0.3s ease;
+    }
+
+    .sidebar i:hover {
+      color: #f0d124;
+    }
+
+    .sidebar .separator {
+      width: 80%;
+      height: 1px;
+      background: #555;
+      margin: 20px 0;
+    }
+
+    .sidebar .logout {
+      margin-top: auto;
+      margin-bottom: 20px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <a href="/pages/Adminstartor/index.html"><img src="../../assests/img/logo-removebg-preview.png" alt="Logo"></a>
+    <ul>
+      <li title="Profile"><a href="profileooo.html"><i class="fa-solid fa-circle-user"></i></a></li>
+      <li title="Search"><a href="index.html"><i class="fas fa-search" title="Search"></i></a></li>
+      <li title="listing"><a href="listinggggg.html"><i class="fa-solid fa-list"></i> </a></li>
+      <li title="Exposes"><a href="agentpage1.html"><i class="fa-solid fa-file-shield"></i></a></li>
+      <li title="Construction"><a href="construction.html"><i class="fa-regular fa-building"></i></a></li>
+      <li title="Marks"><a href="marks.html"><i class="fa-solid fa-bookmark"></i></a></li>
+      <li title="Team"><a href="users.html"><i class="fa-solid fa-house-laptop"></i></a></li>
+      <li title="History"><a href="history.html"><i class="fas fa-history"></i></a></li>
+    </ul>
+    <div class="separator"></div>
+    <li><a href="../signin.html"><i class="fa-solid fa-right-from-bracket" title="Log out"></i></a></li>
+  </div>
+  <div class="container mt-4">
+    <button class="add-listing-btn-header" data-toggle="modal" data-target="#editModal">Add Listing</button>
+
+    <h1 class="header-title">Under Construction  Listings</h1>
+
+    <!-- Listing Cards -->
+    <div class="row">
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="listing-card p-3">
+          <img id="listing-img-1" src="/assests/img/images (1).jpg" alt="Article Image" class="img-fluid mb-3">
+          <div class="card-details">
+            <span class="card-category" id="listing-category-1">Press Release</span>
+            <h3 class="card-title" id="listing-title-1">Market watch: Are condos still a good investment?</h3>
+            <p class="card-description" id="listing-description-1">Debitis ipsa quam necessitatibus consequuntur unde est qui voluptatum...</p>
+            <span class="card-price" id="listing-price-1">Estimated Price: $1,200</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Other listing cards can go here -->
+    </div>
+
+  </div>
+
+  <!-- Modal for editing the listing -->
+  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editModalLabel">Edit Listing</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="editForm">
+            <div class="form-group">
+              <label for="listing-img">Image URL</label>
+              <input type="text" class="form-control" id="listing-img" placeholder="Enter image URL">
+            </div>
+            <div class="form-group">
+              <label for="listing-category">Category</label>
+              <input type="text" class="form-control" id="listing-category" placeholder="Enter category">
+            </div>
+            <div class="form-group">
+              <label for="listing-title">Title</label>
+              <input type="text" class="form-control" id="listing-title" placeholder="Enter title">
+            </div>
+            <div class="form-group">
+              <label for="listing-description">Description</label>
+              <textarea class="form-control" id="listing-description" rows="3" placeholder="Enter description"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="listing-price">Estimated Price</label>
+              <input type="text" class="form-control" id="listing-price" placeholder="Enter price">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" id="saveChanges">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS (CDN) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    // JavaScript to handle dynamic content update
+    document.getElementById('saveChanges').addEventListener('click', function() {
+      // Get input values from the modal
+      const imgSrc = document.getElementById('listing-img').value;
+      const category = document.getElementById('listing-category').value;
+      const title = document.getElementById('listing-title').value;
+      const description = document.getElementById('listing-description').value;
+      const price = document.getElementById('listing-price').value;
+
+      // Update the content of the listing
+      document.getElementById('listing-img-1').src = imgSrc;
+      document.getElementById('listing-category-1').textContent = category;
+      document.getElementById('listing-title-1').textContent = title;
+      document.getElementById('listing-description-1').textContent = description;
+      document.getElementById('listing-price-1').textContent = `Estimated Price: ${price}`;
+
+      // Close the modal
+      $('#editModal').modal('hide');
+    });
+  </script>
+</body>
+</html>
